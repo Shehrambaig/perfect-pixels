@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import {
   Search, Mail, Bell, ChevronLeft, Share2, Upload, Star, Plus, Smartphone,
   Database, Calendar, Send, AlertTriangle, Moon, Sun, CheckCheck, MoreHorizontal,
-  Sidebar as SidebarIcon, ArrowLeft, ArrowRight, RefreshCw, Lock,
+  Sidebar as SidebarIcon, ArrowLeft, ArrowRight, RefreshCw, Lock, Phone,
 } from "lucide-react";
+import { CallPopup } from "@/components/CallPopup";
 
 export const Route = createFileRoute("/")({
   component: Dashboard,
