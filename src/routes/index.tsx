@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import {
   Search, Mail, Bell, ChevronLeft, Share2, Upload, Star, Plus, Smartphone,
   Database, Calendar, Send, AlertTriangle, Moon, Sun, CheckCheck, MoreHorizontal,
-  Sidebar as SidebarIcon, ArrowLeft, ArrowRight, RefreshCw, Lock,
+  Sidebar as SidebarIcon, ArrowLeft, ArrowRight, RefreshCw, Lock, Phone,
 } from "lucide-react";
+import { CallPopup } from "@/components/CallPopup";
 
 export const Route = createFileRoute("/")({
   component: Dashboard,
@@ -86,8 +88,16 @@ function ColumnCard({ title, children }: { title: string; children: React.ReactN
 }
 
 function Dashboard() {
+  const [callOpen, setCallOpen] = useState(true);
   return (
     <div className="min-h-screen w-full bg-neutral-400/40 p-6 md:p-10 flex items-start justify-center">
+      {callOpen && <CallPopup onClose={() => setCallOpen(false)} />}
+      <button
+        onClick={() => setCallOpen(true)}
+        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full bg-black text-white px-5 py-3 text-sm font-semibold shadow-2xl hover:brightness-110"
+      >
+        <Phone className="w-4 h-4" /> Open dialer
+      </button>
       {/* Browser chrome */}
       <div className="w-full max-w-[1400px] rounded-[28px] bg-gradient-to-b from-[#e9e7ee] via-[#dcdbe4] to-[#c8cbd8] shadow-2xl overflow-hidden">
         {/* window bar */}
